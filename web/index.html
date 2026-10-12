@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agentic Creative Studio</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="mark" aria-hidden="true"></span><span>Agentic Creative Studio</span></div>
+  <div class="meta"><span id="provider" class="pill">…</span><span class="muted" id="version"></span></div>
+</header>
+<main class="layout">
+  <section class="col compose" aria-labelledby="h-brief">
+    <h2 id="h-brief">New brief</h2>
+    <form id="brief-form" autocomplete="off">
+      <label>Name <input id="f-title" maxlength="80" required value="Lumen Coffee"></label>
+      <label>Brief <textarea id="f-text" maxlength="2000" rows="5" required>A small roastery launching a subscription for office teams. Warm, honest, no hype.</textarea></label>
+      <div class="row2">
+        <label>Audience <input id="f-audience" maxlength="120" value="Office managers"></label>
+        <label>Tone <input id="f-tone" maxlength="60" value="warm"></label>
+      </div>
+      <label>Failure drill
+        <select id="f-chaos">
+          <option value="none">None</option>
+          <option value="flaky">Flaky tool (retries, then succeeds)</option>
+          <option value="broken">Permanent failure (needs manual retry)</option>
+        </select>
+      </label>
+      <button class="primary" type="submit">Run pipeline</button>
+      <p id="form-error" class="error" role="alert" hidden></p>
+    </form>
+    <h2>Tasks</h2>
+    <ul id="task-list" class="tasks" aria-live="polite"></ul>
+  </section>
+  <section class="col stage" aria-live="polite">
+    <div id="empty" class="empty">
+      <p class="big">Send a brief through five agents.</p>
+      <p class="muted">Planner, copywriter, art director, critic, packager. Run the demo offline, break a step on purpose and watch the retry policy work.</p>
+    </div>
+    <div id="detail" hidden>
+      <div class="detail-head">
+        <div><h2 id="d-title"></h2><p class="muted" id="d-sub"></p></div>
+        <div class="actions">
+          <span id="d-state" class="state"></span>
+          <button id="btn-cancel" type="button">Cancel</button>
+          <button id="btn-retry" type="button">Retry</button>
+        </div>
+      </div>
+      <ol id="steps" class="steps"></ol>
+      <div id="result" hidden></div>
+      <h3>Event log</h3>
+      <ol id="events" class="events"></ol>
+    </div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
