@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sys
+import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -23,6 +24,8 @@ from .orchestrator import CHAOS_MODES, Orchestrator, Store, ValidationError
 WEB = Path(__file__).resolve().parent.parent / "web"
 ID = re.compile(r"^[0-9a-f]{12}$")
 MAX_BODY = 16 * 1024
+MAX_SSE = 16                    # concurrent event streams
+LOCAL_HOSTS = {"127.0.0.1", "localhost", "[::1]"}
 TYPES = {".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml"}
 CSP = "default-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; frame-ancestors 'none'"
 
@@ -36,7 +39,9 @@ def build_provider(mode: str, env=None):
     return DemoProvider(delay=float((env or os.environ).get("ACS_DEMO_DELAY", "0.7")))
 
 
-def make_handler(orch: Orchestrator, port_getter):
+def make_handler(orch: Orchestrator, port_getter, bind_host: str = "127.0.0.1"):
+    streams = threading.BoundedSemaphore(MAX_SSE)
+
     class Handler(BaseHTTPRequestHandler):
         server_version = "ACS/" + __version__
         protocol_version = "HTTP/1.1"
@@ -61,6 +66,13 @@ def make_handler(orch: Orchestrator, port_getter):
         def _error(self, status, message):
             self._send(status, {"error": message})
 
+        def _host_ok(self):
+            """Refuse requests whose Host is not the loopback name we serve (DNS-rebinding defence)."""
+            if bind_host not in ("127.0.0.1", "localhost", "::1"):
+                return True                       # deliberately exposed (container): the proxy owns host policy
+            host = (self.headers.get("Host") or "").rsplit(":", 1)
+            return host[0] in LOCAL_HOSTS and (len(host) == 1 or host[1] == str(port_getter()))
+
         def _same_origin(self):
             origin = self.headers.get("Origin")
             if origin is None:
@@ -70,6 +82,8 @@ def make_handler(orch: Orchestrator, port_getter):
 
         def do_GET(self):
             path = urlsplit(self.path).path
+            if not self._host_ok():
+                return self._error(403, "Host not allowed")
             try:
                 if path == "/api/health":
                     return self._send(200, {"ok": True, "version": __version__, "provider": orch.provider.name,
@@ -96,6 +110,8 @@ def make_handler(orch: Orchestrator, port_getter):
 
         def _sse(self, task_id):
             orch.snapshot(task_id)                # KeyError -> 404 before headers are sent
+            if not streams.acquire(blocking=False):
+                return self._error(503, "Too many open event streams")
             self.send_response(200)
             for k, v in (("Content-Type", "text/event-stream"), ("Cache-Control", "no-store"), ("Connection", "close"),
                          ("X-Content-Type-Options", "nosniff")):
@@ -116,10 +132,17 @@ def make_handler(orch: Orchestrator, port_getter):
                         break
             except (BrokenPipeError, ConnectionResetError):
                 pass
+            finally:
+                streams.release()
 
         def _body(self):
-            length = int(self.headers.get("Content-Length", "0") or 0)
-            if length > MAX_BODY:
+            try:
+                length = int(self.headers.get("Content-Length", "0") or 0)
+            except ValueError:
+                raise ValidationError("Invalid Content-Length") from None
+            if self.headers.get("Transfer-Encoding"):
+                raise ValidationError("Chunked bodies are not accepted")
+            if length < 0 or length > MAX_BODY:
                 raise ValidationError("Request body too large")
             if not length:
                 return {}
@@ -130,6 +153,8 @@ def make_handler(orch: Orchestrator, port_getter):
 
         def do_POST(self):
             path = urlsplit(self.path).path
+            if not self._host_ok():
+                return self._error(403, "Host not allowed")
             if not self._same_origin():
                 return self._error(403, "Cross-origin request refused")
             try:
@@ -153,7 +178,7 @@ def make_handler(orch: Orchestrator, port_getter):
 
 def serve(host="127.0.0.1", port=8780, mode="demo", data="data/tasks.json"):
     orch = Orchestrator(Store(data), build_provider(mode))
-    httpd = ThreadingHTTPServer((host, port), make_handler(orch, lambda: httpd.server_address[1]))
+    httpd = ThreadingHTTPServer((host, port), make_handler(orch, lambda: httpd.server_address[1], host))
     httpd.daemon_threads = True
     return httpd, orch
 

@@ -188,6 +188,32 @@ class Validation(unittest.TestCase):
             orch.submit(BRIEF, chaos="nuclear")
 
 
+class Limits(unittest.TestCase):
+    def test_active_task_cap_and_finished_pruning(self):
+        import acs.orchestrator as mod
+        gate = threading.Event()
+
+        class Blocking(Scripted):
+            def run(self, agent, brief, context):
+                gate.wait(3)
+                return super().run(agent, brief, context)
+
+        old = mod.MAX_ACTIVE, mod.MAX_KEPT
+        mod.MAX_ACTIVE, mod.MAX_KEPT = 3, 2
+        try:
+            orch = make(Blocking({}), workers=1)
+            ids = [orch.submit(BRIEF)["id"] for _ in range(3)]
+            with self.assertRaises(ValidationError):
+                orch.submit(BRIEF)
+            gate.set()
+            for i in ids:
+                orch.wait(i)
+            orch.submit(BRIEF)
+            self.assertLessEqual(len([t for t in orch.listing() if t["state"] in ("succeeded", "failed", "cancelled")]), 2)
+        finally:
+            mod.MAX_ACTIVE, mod.MAX_KEPT = old
+
+
 class Persistence(unittest.TestCase):
     def test_tasks_survive_restart_and_interrupted_ones_are_failed(self):
         with tempfile.TemporaryDirectory() as tmp:

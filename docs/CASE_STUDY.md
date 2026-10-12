@@ -32,7 +32,7 @@ A five-agent pipeline (planner, copywriter, art director, critic, packager) that
 
 ## Evidence
 
-- 33 automated tests, run with `python3 -m unittest discover -s tests -t .`.
+- 36 automated tests, run with `python3 -m unittest discover -s tests -t .`.
 - Screenshots in `screenshots/` generated from a real run by `scripts/capture_screenshots.sh`.
 - Docker image built and run; a task completed through the container API.
 

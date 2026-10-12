@@ -60,7 +60,7 @@ The key is read from the server environment only. See [docs/SECURITY.md](docs/SE
 python3 -m unittest discover -s tests -t .
 ```
 
-33 tests cover the state machine (retries, exhaustion, permanent errors, cancellation during work and during back-off, queued cancellation, manual retry, restart recovery), the providers (determinism, request shape, JSON extraction, HTTP error mapping) and the HTTP API (validation, body limit, cross-origin refusal, path traversal, SSE).
+36 tests cover the state machine (retries, exhaustion, permanent errors, cancellation during work and during back-off, queued cancellation, manual retry, restart recovery), the providers (determinism, request shape, JSON extraction, HTTP error mapping) and the HTTP API (validation, body limit, cross-origin refusal, path traversal, SSE).
 
 Screenshots in `screenshots/` are produced by a real run: `./scripts/capture_screenshots.sh` (needs the `agent-browser` CLI).
 

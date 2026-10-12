@@ -78,6 +78,22 @@ class Api(unittest.TestCase):
         ok = self.call("POST", "/api/tasks", {"brief": BRIEF}, {"Origin": f"http://127.0.0.1:{self.port}"})
         self.assertEqual(ok[0], 201)
 
+    def test_foreign_host_header_refused_dns_rebinding(self):
+        self.assertEqual(self.call("GET", "/api/tasks", None, {"Host": "evil.example"})[0], 403)
+        self.assertEqual(self.call("GET", "/api/tasks", None, {"Host": f"evil.example:{self.port}"})[0], 403)
+        self.assertEqual(self.call("POST", "/api/tasks", {"brief": BRIEF}, {"Host": "attacker.test"})[0], 403)
+        self.assertEqual(self.call("GET", "/api/health", None, {"Host": f"localhost:{self.port}"})[0], 200)
+
+    def test_negative_and_chunked_bodies_refused(self):
+        for headers in ({"Content-Length": "-1"}, {"Content-Length": "abc"}, {"Transfer-Encoding": "chunked"}):
+            conn = http.client.HTTPConnection("127.0.0.1", self.port, timeout=5)
+            conn.putrequest("POST", "/api/tasks")
+            for k, v in headers.items():
+                conn.putheader(k, v)
+            conn.endheaders()
+            self.assertEqual(conn.getresponse().status, 400, headers)
+            conn.close()
+
     def test_unknown_and_malformed_ids(self):
         self.assertEqual(self.call("GET", "/api/tasks/000000000000")[0], 404)
         self.assertEqual(self.call("GET", "/api/tasks/..%2f..%2fetc")[0], 400)

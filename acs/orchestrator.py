@@ -20,6 +20,8 @@ from .agents import AGENTS, PermanentError, TransientError
 TERMINAL = {"succeeded", "failed", "cancelled"}
 CHAOS_MODES = ("none", "flaky", "broken")
 MAX_BRIEF_TEXT = 2000
+MAX_ACTIVE = 50            # queued + running tasks accepted at once
+MAX_KEPT = 200             # finished tasks kept in memory and on disk
 
 
 class ValidationError(ValueError):
@@ -69,12 +71,19 @@ class Orchestrator:
         brief = self.validate(brief)
         if chaos not in CHAOS_MODES:
             raise ValidationError("chaos must be one of " + ", ".join(CHAOS_MODES))
+        with self.cond:
+            if sum(t["state"] in ("queued", "running") for t in self.store.tasks.values()) >= MAX_ACTIVE:
+                raise ValidationError("Too many active tasks; wait for some to finish")
         now = time.time()
         task = {"id": uuid.uuid4().hex[:12], "brief": brief, "chaos": chaos, "provider": self.provider.name,
                 "state": "queued", "runs": 0, "created": now, "updated": now, "error": None, "result": None, "events": [],
                 "steps": [{"agent": a, "state": "pending", "attempts": 0, "output": None, "error": None} for a in AGENTS]}
         with self.cond:
             self.store.tasks[task["id"]] = task
+            finished = sorted((t for t in self.store.tasks.values() if t["state"] in TERMINAL), key=lambda t: t["created"])
+            for old in finished[:max(0, len(finished) - MAX_KEPT)]:
+                self.store.tasks.pop(old["id"], None)
+                self.cancel_flags.pop(old["id"], None)
             self._event(task, "task.queued", "Task queued")
         self._enqueue(task["id"])
         return self.snapshot(task["id"])
