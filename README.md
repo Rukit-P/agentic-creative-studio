@@ -18,6 +18,17 @@ It is a demonstration of agent orchestration and a polished front end, not a pro
 - **Failure drills** (flaky tool, permanent failure) so the retry and recovery paths can be seen and tested.
 - Persistence to a JSON file; tasks interrupted by a restart are marked failed and can be retried.
 
+## What is demonstrated, and against what
+
+| Behaviour | Demo mode (default, no key, no network) | Real model |
+| --- | --- | --- |
+| Five-agent pipeline, state machine, events | Exercised end to end; screenshots are from real runs | Not run against the live API |
+| Retries, permanent failure, cancellation, manual retry, restart recovery | Exercised via failure drills and 36 automated tests | Same orchestrator code path; error mapping unit-tested with mocked HTTP errors |
+| Output quality (copy, palette, critique) | Template-based and rule-based: it shows the plumbing, not model quality | **Not verified** |
+| LLM request shape, JSON extraction, HTTP error classification | n/a | Unit-tested with an injected transport only |
+
+You can run, test and screenshot everything without paying for an API: demo mode is the default.
+
 ## Install
 
 Requires Python 3.10 or later. There are no third-party dependencies.
@@ -47,6 +58,7 @@ Open the printed address. Submit the default brief, then try the "Failure drill"
 ### Optional: real model
 
 ```bash
+cp .env.example .env                  # optional; the server reads real environment variables only
 export ACS_LLM_API_KEY=...            # never committed, never sent to the browser
 export ACS_LLM_MODEL=claude-sonnet-5-5   # optional; this is the default
 python3 -m acs.server --mode llm
