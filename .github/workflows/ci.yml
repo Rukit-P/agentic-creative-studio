@@ -1,0 +1,23 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m unittest discover -s tests -t . -v
+      - name: Server smoke test
+        run: |
+          python -m acs.server --port 8790 --data /tmp/tasks.json &
+          for i in $(seq 20); do curl -fs localhost:8790/api/health && break; sleep 0.3; done
+          curl -fs localhost:8790/ | grep -q "Agentic Creative Studio"
