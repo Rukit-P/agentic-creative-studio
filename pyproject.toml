@@ -1,0 +1,13 @@
+[project]
+name = "agentic-creative-studio"
+version = "0.1.0"
+description = "Small multi-agent orchestrator with retries, cancellation and a demo mode"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+acs = "acs.server:main"
+
+[tool.setuptools]
+packages = ["acs"]
