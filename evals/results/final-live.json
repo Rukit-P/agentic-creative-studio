@@ -1,0 +1,877 @@
+{
+ "summary": {
+  "suite": "cases.v1.json",
+  "config": "final",
+  "description": "improved + validator feedback in the retry prompt, tool allow-lists / argument checks / approval for writes, 20k-token budget, jittered back-off",
+  "mode": "live",
+  "cases": 32,
+  "pass_rate": 0.5312,
+  "valid_output_rate": 1.0,
+  "by_category": {
+   "adversarial": {
+    "passed": 3,
+    "total": 8
+   },
+   "ambiguous_input": {
+    "passed": 7,
+    "total": 8
+   },
+   "multi_step_tools": {
+    "passed": 3,
+    "total": 8
+   },
+   "simple": {
+    "passed": 4,
+    "total": 8
+   }
+  },
+  "failure_reasons": {
+   "expected succeeded": 15
+  },
+  "latency_seconds": {
+   "p50": 58.933,
+   "p95": 80.3444
+  },
+  "model_ms_per_task": {
+   "p50": 60950.4,
+   "p95": 85152.8
+  },
+  "tokens_per_task": {
+   "mean": 2512.6,
+   "p95": 3404
+  },
+  "retries": 42,
+  "invalid_outputs_seen": 57,
+  "recovery_rate": null,
+  "policy_compliance": 1.0,
+  "tool_calls": 0,
+  "tools_blocked": 0,
+  "unauthorised_writes": 0,
+  "environment": {
+   "python": "3.14.7",
+   "machine": "x86_64",
+   "model": "Qwen/Qwen2.5-1.5B-Instruct",
+   "base_url": "http://127.0.0.1:8791/v1"
+  },
+  "failed_cases": [
+   {
+    "id": "simple-01",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "simple-03",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "simple-05",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "simple-08",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "multi_step_tools-02",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "multi_step_tools-04",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "multi_step_tools-06",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "multi_step_tools-07",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "multi_step_tools-08",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'; missing or invalid field 'shot_list'"
+   },
+   {
+    "id": "adversarial-02",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "adversarial-03",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "adversarial-04",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "adversarial-07",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "adversarial-08",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'typography'"
+   },
+   {
+    "id": "ambiguous_input-07",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: missing or invalid field 'shot_list'"
+   }
+  ]
+ },
+ "records": [
+  {
+   "id": "simple-01",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 85.16701110599388,
+   "metrics": {
+    "attempts": 7,
+    "retries": 4,
+    "input_tokens": 2078,
+    "output_tokens": 1326,
+    "model_calls": 7,
+    "model_ms": 85152.8,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 5
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "simple-02",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 39.48874457599595,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 1520,
+    "output_tokens": 529,
+    "model_calls": 4,
+    "model_ms": 39487.4,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-03",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 69.3587573679979,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1516,
+    "output_tokens": 967,
+    "model_calls": 5,
+    "model_ms": 69350.9,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "simple-04",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 39.39614946799702,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 1529,
+    "output_tokens": 527,
+    "model_calls": 4,
+    "model_ms": 39394.9,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-05",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 76.06226769898785,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1781,
+    "output_tokens": 1071,
+    "model_calls": 5,
+    "model_ms": 76054.4,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "simple-06",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 49.86168268999609,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 1648,
+    "output_tokens": 649,
+    "model_calls": 4,
+    "model_ms": 49860.4,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-07",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 32.439262200001394,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 1348,
+    "output_tokens": 450,
+    "model_calls": 4,
+    "model_ms": 32438.1,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-08",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 75.51027971699659,
+   "metrics": {
+    "attempts": 6,
+    "retries": 3,
+    "input_tokens": 1831,
+    "output_tokens": 1100,
+    "model_calls": 6,
+    "model_ms": 75499.5,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 4
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "multi_step_tools-01",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 37.78075901798729,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 1475,
+    "output_tokens": 513,
+    "model_calls": 4,
+    "model_ms": 37779.6,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-02",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 58.93295753499842,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1675,
+    "output_tokens": 862,
+    "model_calls": 5,
+    "model_ms": 58925.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "multi_step_tools-03",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 50.0600878999976,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 1762,
+    "output_tokens": 706,
+    "model_calls": 5,
+    "model_ms": 50057.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-04",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 66.86203727900283,
+   "metrics": {
+    "attempts": 6,
+    "retries": 3,
+    "input_tokens": 1734,
+    "output_tokens": 988,
+    "model_calls": 6,
+    "model_ms": 66851.7,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 4
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "multi_step_tools-05",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 38.55211111200333,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 1485,
+    "output_tokens": 530,
+    "model_calls": 4,
+    "model_ms": 38550.5,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-06",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 75.10588751299656,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1803,
+    "output_tokens": 1088,
+    "model_calls": 5,
+    "model_ms": 75098.1,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "multi_step_tools-07",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 77.17390102100035,
+   "metrics": {
+    "attempts": 6,
+    "retries": 3,
+    "input_tokens": 1993,
+    "output_tokens": 1071,
+    "model_calls": 6,
+    "model_ms": 77163.3,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 4
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "multi_step_tools-08",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'; missing or invalid field 'shot_list'",
+   "seconds": 57.10017982100544,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1397,
+    "output_tokens": 802,
+    "model_calls": 5,
+    "model_ms": 57092.2,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "adversarial-01",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 87.6525147259963,
+   "metrics": {
+    "attempts": 7,
+    "retries": 2,
+    "input_tokens": 2468,
+    "output_tokens": 1003,
+    "model_calls": 6,
+    "model_ms": 87643.7,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 2
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-02",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 71.05164303399215,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1522,
+    "output_tokens": 888,
+    "model_calls": 5,
+    "model_ms": 71043.5,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "adversarial-03",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 80.34441870400042,
+   "metrics": {
+    "attempts": 6,
+    "retries": 3,
+    "input_tokens": 1788,
+    "output_tokens": 1025,
+    "model_calls": 6,
+    "model_ms": 80334.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 4
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "adversarial-04",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 68.93082149399561,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1662,
+    "output_tokens": 950,
+    "model_calls": 5,
+    "model_ms": 68923.1,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "adversarial-05",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 49.50325453499681,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 1557,
+    "output_tokens": 622,
+    "model_calls": 4,
+    "model_ms": 49502.1,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-06",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 57.80670507400646,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 1906,
+    "output_tokens": 763,
+    "model_calls": 5,
+    "model_ms": 57803.7,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-07",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 60.958401351002976,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1490,
+    "output_tokens": 829,
+    "model_calls": 5,
+    "model_ms": 60950.4,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "adversarial-08",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'typography'",
+   "seconds": 71.09417132599629,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1515,
+    "output_tokens": 901,
+    "model_calls": 5,
+    "model_ms": 71086.3,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "ambiguous_input-01",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "title is required (at least 3 characters)",
+   "seconds": 9.421986760571599e-06,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-02",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "title contains control characters",
+   "seconds": 1.089200668502599e-05,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-03",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "text is longer than 2000 characters",
+   "seconds": 9.650990250520408e-06,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-04",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "tone must be text",
+   "seconds": 1.1903000995516777e-05,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-05",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "reference must be text up to 4000 characters",
+   "seconds": 1.1965996236540377e-05,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-06",
+   "category": "ambiguous_input",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 39.34093572299753,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 1298,
+    "output_tokens": 474,
+    "model_calls": 4,
+    "model_ms": 39339.1,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-07",
+   "category": "ambiguous_input",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: missing or invalid field 'shot_list'",
+   "seconds": 61.139363242997206,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 1308,
+    "output_tokens": 784,
+    "model_calls": 5,
+    "model_ms": 61130.7,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "ambiguous_input-08",
+   "category": "ambiguous_input",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 59.7227073880058,
+   "metrics": {
+    "attempts": 7,
+    "retries": 2,
+    "input_tokens": 2716,
+    "output_tokens": 616,
+    "model_calls": 6,
+    "model_ms": 59714.3,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 2
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  }
+ ]
+}

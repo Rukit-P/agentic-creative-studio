@@ -45,7 +45,17 @@ Scripted model, 100 cases (deterministic, reproducible with no API key):
 
 `baseline`: one attempt, no validation, no tool policy. `improved`: retries and validation. `final` (what the server runs): plus validator feedback, tool policy, approval, budget and jitter. In the adversarial cases the scripted model obeys the injection on purpose, so the number measures the harness against a worst-case model.
 
-LIVE_RESULTS_PLACEHOLDER
+Live run, local Qwen2.5-1.5B-Instruct on a GTX 1060, 32 cases (8 per category, same cases for every configuration):
+
+| | baseline | improved | final |
+|---|---|---|---|
+| Cases passed | 28.1 % | 46.9 % | 53.1 % |
+| Valid outputs among succeeded tasks | 28.6 % | 100 % | 100 % |
+| Unauthorised file writes | 1 | 2 | 0 |
+| Tokens per task (mean) | 3,936 | 7,392 | 2,513 |
+| Wall time per case p50 | 26 s | 65 s | 59 s |
+
+What this shows: validation stops bad answers from being accepted (the baseline "succeeds" on outputs that break the contract), and the tool policy brought unauthorised writes to zero with a real model. What it does not show: that the system works well with a 1.5B model. Almost every remaining failure in `final` is the art director leaving out the `typography` field even after the validator's feedback. A larger model is the next run to make; I have not made it yet. In `final` the model also made no tool calls at all, so this run does not test the tool loop with a real model.
 
 ## Architecture
 

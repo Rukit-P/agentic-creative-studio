@@ -158,6 +158,7 @@ def main(argv=None):
     ap.add_argument("--config", choices=list(CONFIGS), required=True)
     ap.add_argument("--live", action="store_true", help="use the real model at ACS_OPENAI_BASE_URL instead of scripts")
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--per-category", type=int, help="take the first N cases of each category (stratified subset)")
     ap.add_argument("--categories", help="comma-separated categories to run")
     ap.add_argument("--out", help="output JSON path (default evals/results/<config>-<mode>.json)")
     args = ap.parse_args(argv)
@@ -179,6 +180,9 @@ def main(argv=None):
         factory = lambda case: OpenAICompatProvider("http://scripted/v1", "scripted",  # noqa: E731
                                                     transport=ScriptedTransport(case["script"], case.get("usage_per_call")))
         mode = "scripted"
+    if args.per_category:
+        seen = {}
+        cases = [c for c in cases if seen.setdefault(c["category"], []).append(c) or len(seen[c["category"]]) <= args.per_category]
     if args.limit:
         cases = cases[:args.limit]
     records = []
