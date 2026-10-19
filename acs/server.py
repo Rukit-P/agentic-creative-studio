@@ -4,6 +4,8 @@ Routes
   GET  /api/health            GET  /api/tasks            POST /api/tasks
   GET  /api/tasks/<id>        GET  /api/tasks/<id>/events (SSE)
   POST /api/tasks/<id>/cancel POST /api/tasks/<id>/retry
+  POST /api/tasks/<id>/approve POST /api/tasks/<id>/reject   (pending write-tool call)
+  GET  /api/metrics
 """
 from __future__ import annotations
 
@@ -18,7 +20,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from . import __version__
-from .agents import DemoProvider, LLMProvider
+from .agents import DemoProvider, LLMProvider, OpenAICompatProvider
 from .orchestrator import CHAOS_MODES, Orchestrator, Store, ValidationError
 
 WEB = Path(__file__).resolve().parent.parent / "web"
@@ -35,6 +37,11 @@ def build_provider(mode: str, env=None):
         provider = LLMProvider.from_env(env)
         if provider is None:
             raise SystemExit("ACS_LLM_API_KEY is not set; use --mode demo or export the key (see README).")
+        return provider
+    if mode == "openai":
+        provider = OpenAICompatProvider.from_env(env)
+        if provider is None:
+            raise SystemExit("ACS_OPENAI_BASE_URL is not set (e.g. http://127.0.0.1:8791/v1); see README.")
         return provider
     return DemoProvider(delay=float((env or os.environ).get("ACS_DEMO_DELAY", "0.7")))
 
@@ -90,6 +97,8 @@ def make_handler(orch: Orchestrator, port_getter, bind_host: str = "127.0.0.1"):
                                             "chaos_modes": list(CHAOS_MODES), "max_attempts": orch.max_attempts})
                 if path == "/api/tasks":
                     return self._send(200, orch.listing())
+                if path == "/api/metrics":
+                    return self._send(200, orch.metrics())
                 m = re.fullmatch(r"/api/tasks/([^/]+)(/events)?", path)
                 if m:
                     if not ID.match(m[1]):
@@ -164,8 +173,10 @@ def make_handler(orch: Orchestrator, port_getter, bind_host: str = "127.0.0.1"):
                         raise ValidationError("Body must be an object")
                     task = orch.submit(data.get("brief"), data.get("chaos", "none"))
                     return self._send(201, task)
-                m = re.fullmatch(r"/api/tasks/([0-9a-f]{12})/(cancel|retry)", path)
+                m = re.fullmatch(r"/api/tasks/([0-9a-f]{12})/(cancel|retry|approve|reject)", path)
                 if m:
+                    if m[2] in ("approve", "reject"):
+                        return self._send(200, orch.decide(m[1], m[2] == "approve"))
                     return self._send(200, getattr(orch, m[2])(m[1]))
                 return self._error(404, "Not found")
             except ValidationError as error:
@@ -176,8 +187,8 @@ def make_handler(orch: Orchestrator, port_getter, bind_host: str = "127.0.0.1"):
     return Handler
 
 
-def serve(host="127.0.0.1", port=8780, mode="demo", data="data/tasks.json"):
-    orch = Orchestrator(Store(data), build_provider(mode))
+def serve(host="127.0.0.1", port=8780, mode="demo", data="data/tasks.json", exports="data/exports"):
+    orch = Orchestrator(Store(data), build_provider(mode), exports_dir=exports)
     httpd = ThreadingHTTPServer((host, port), make_handler(orch, lambda: httpd.server_address[1], host))
     httpd.daemon_threads = True
     return httpd, orch
@@ -187,7 +198,8 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="Agentic Creative Studio")
     ap.add_argument("--host", default="127.0.0.1")
     ap.add_argument("--port", type=int, default=8780)
-    ap.add_argument("--mode", choices=("demo", "llm"), default="demo")
+    ap.add_argument("--mode", choices=("demo", "llm", "openai"), default="demo",
+                    help="demo: deterministic, offline; llm: Anthropic API; openai: any OpenAI-compatible server")
     ap.add_argument("--data", default="data/tasks.json")
     args = ap.parse_args(argv)
     if args.host not in ("127.0.0.1", "localhost", "::1"):

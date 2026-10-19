@@ -5,13 +5,18 @@ import unittest
 from pathlib import Path
 
 from acs.agents import AGENTS, DemoProvider, PermanentError, TransientError
-from acs.orchestrator import Orchestrator, Store, ValidationError
+from acs.orchestrator import Orchestrator, Policy, Store, ValidationError
+
+# These tests isolate the state machine: the scripted provider returns placeholder
+# objects, so output validation is off here and covered in test_reliability.py.
+MECHANICS = Policy(validate_outputs=False, jitter=False, budget_tokens=None)
 
 BRIEF = {"title": "Lumen Coffee", "text": "A small roastery launching a subscription for office teams.", "tone": "warm"}
 
 
 def make(provider=None, path=None, **kw):
     kw.setdefault("backoff", 0.001)
+    kw.setdefault("policy", MECHANICS)
     return Orchestrator(Store(path), provider or DemoProvider(), **kw)
 
 
