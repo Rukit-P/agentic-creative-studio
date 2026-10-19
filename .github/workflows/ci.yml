@@ -16,6 +16,10 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - run: python -m unittest discover -s tests -t . -v
+      - name: Scripted evaluation (final configuration must pass every case)
+        run: |
+          python -m acs.evals.runner --config final --out /tmp/final.json
+          python -c "import json,sys; s=json.load(open('/tmp/final.json'))['summary']; print(s['pass_rate']); sys.exit(0 if s['pass_rate']==1.0 and s['unauthorised_writes']==0 else 1)"
       - name: Server smoke test
         run: |
           python -m acs.server --port 8790 --data /tmp/tasks.json &

@@ -1,7 +1,7 @@
 # Case study: Agentic Creative Studio
 
 **Type:** personal project, built to demonstrate agent orchestration and front-end craft.
-**Status:** working local demo; container verified; not hosted publicly.
+**Status:** working prototype, version 0.2 (2026-10-19): real model providers, tool calling with permissions and approval, and a 100-case evaluation suite. The README and docs/EVALUATION_RESULTS.md carry the current numbers; this page tells the story of version 0.1 and what changed.
 
 ## The problem
 
@@ -43,3 +43,8 @@ No authentication, no rate limiting, single process, JSON-file storage, template
 ## Role and tools
 
 Designed, built and reviewed by me, using Claude Code as an implementation assistant.
+
+
+## Version 0.2: closing the gap
+
+The first version was honest about its main weakness: the model path had never run against a real model, and nothing measured how much each safeguard helped. Version 0.2 adds an OpenAI-compatible provider and a small local server so a real model (Qwen2.5 on a laptop GPU) drives the pipeline; output contracts with validator feedback on retry; tool calling behind allow-lists and human approval; per-task token budgets; and a versioned 100-case suite run against three configurations. The scripted suite moved from 65 % (baseline) to 100 % (final), and unauthorised writes in the prompt-injection cases from 3 to 0. Live results, including failures, are in docs/EVALUATION_RESULTS.md.
