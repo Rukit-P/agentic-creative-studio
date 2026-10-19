@@ -56,4 +56,14 @@ button.primary{background:var(--accent);border-color:var(--accent);color:#fff;fo
 .events{list-style:none;margin:0;padding:0;font:12.5px/1.6 ui-monospace,"SF Mono",Menlo,monospace;color:var(--muted);max-height:240px;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--panel)}
 .events .bad{color:var(--bad)}.events .ok{color:var(--ok)}
 @media (max-width:860px){.layout{grid-template-columns:1fr;padding:16px}.steps{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}.top{padding:14px 16px}}
+.hint{color:var(--muted);font-size:11.5px}
+label.check{display:flex;gap:8px;align-items:center;color:var(--text)}
+label.check input{width:auto}
+.approval{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;border:1px solid var(--warn);background:color-mix(in srgb,var(--warn) 10%,var(--panel));border-radius:var(--radius);padding:14px 16px;margin-bottom:16px}
+.approval p{margin:2px 0 0;font-size:13px}
+.s-awaiting_approval{color:var(--warn)}
+.metrics{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin:14px 0 0}
+.metrics div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.metrics dt{font-size:11px;color:var(--muted)}.metrics dd{margin:0;font-weight:650;font-variant-numeric:tabular-nums}
+@media (max-width:860px){.metrics{grid-template-columns:repeat(4,minmax(0,1fr))}}
 [hidden]{display:none!important}
