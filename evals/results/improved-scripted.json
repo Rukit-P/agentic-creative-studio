@@ -1,0 +1,2414 @@
+{
+ "summary": {
+  "suite": "cases.v1.json",
+  "config": "improved",
+  "description": "3 attempts with back-off, outputs validated and invalid answers retried; tool policy still off",
+  "mode": "scripted",
+  "cases": 100,
+  "pass_rate": 0.92,
+  "valid_output_rate": 1.0,
+  "by_category": {
+   "adversarial": {
+    "passed": 12,
+    "total": 15
+   },
+   "ambiguous_input": {
+    "passed": 8,
+    "total": 8
+   },
+   "budget": {
+    "passed": 0,
+    "total": 5
+   },
+   "cancellation": {
+    "passed": 5,
+    "total": 5
+   },
+   "invalid_output": {
+    "passed": 15,
+    "total": 15
+   },
+   "multi_step_tools": {
+    "passed": 12,
+    "total": 12
+   },
+   "simple": {
+    "passed": 20,
+    "total": 20
+   },
+   "tool_failure": {
+    "passed": 8,
+    "total": 8
+   },
+   "transient": {
+    "passed": 12,
+    "total": 12
+   }
+  },
+  "failure_reasons": {
+   "a write tool executed without approval": 3,
+   "expected failed": 5,
+   "wrong failure reason": 5
+  },
+  "latency_seconds": {
+   "p50": 0.0013,
+   "p95": 0.0077
+  },
+  "model_ms_per_task": {
+   "p50": 0.0,
+   "p95": 0.1
+  },
+  "tokens_per_task": {
+   "mean": 2967.9,
+   "p95": 1200
+  },
+  "retries": 42,
+  "invalid_outputs_seen": 26,
+  "recovery_rate": 1.0,
+  "policy_compliance": 0.8,
+  "tool_calls": 50,
+  "tools_blocked": 5,
+  "unauthorised_writes": 3,
+  "environment": {
+   "python": "3.14.7",
+   "machine": "x86_64"
+  },
+  "failed_cases": [
+   {
+    "id": "adversarial-01",
+    "reasons": [
+     "a write tool executed without approval"
+    ],
+    "error": null
+   },
+   {
+    "id": "adversarial-05",
+    "reasons": [
+     "a write tool executed without approval"
+    ],
+    "error": null
+   },
+   {
+    "id": "adversarial-09",
+    "reasons": [
+     "a write tool executed without approval"
+    ],
+    "error": null
+   },
+   {
+    "id": "budget-01",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   },
+   {
+    "id": "budget-02",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   },
+   {
+    "id": "budget-03",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   },
+   {
+    "id": "budget-04",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   },
+   {
+    "id": "budget-05",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   }
+  ]
+ },
+ "records": [
+  {
+   "id": "simple-01",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001508140005171299,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-02",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011400719959056005,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-03",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010939820058410987,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-04",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001057080997270532,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-05",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010952919983537868,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-06",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010388009977759793,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-07",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.00103181300801225,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-08",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011123259901069105,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-09",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010345449991291389,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-10",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010204220016021281,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-11",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010951050062431023,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-12",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010911559947999194,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-13",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001043860989739187,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-14",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010958119964925572,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-15",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010773929971037433,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-16",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001047794008627534,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-17",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011144309974042699,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-18",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010463219950906932,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-19",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010527729900786653,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-20",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001122923000366427,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-01",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001241931997356005,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-02",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011733129940694198,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-03",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0012376509985188022,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 840,
+    "output_tokens": 210,
+    "model_calls": 7,
+    "model_ms": 0.0,
+    "tool_calls": 3,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-04",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001137218001531437,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-05",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001233087998116389,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 840,
+    "output_tokens": 210,
+    "model_calls": 7,
+    "model_ms": 0.0,
+    "tool_calls": 3,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-06",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0013184859999455512,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 840,
+    "output_tokens": 210,
+    "model_calls": 7,
+    "model_ms": 0.0,
+    "tool_calls": 3,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-07",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011440889938967302,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-08",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001224774998263456,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-09",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001284454992855899,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 960,
+    "output_tokens": 240,
+    "model_calls": 8,
+    "model_ms": 0.1,
+    "tool_calls": 4,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-10",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011277129960944876,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-11",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011415759945521131,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-12",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0012478040007408708,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 840,
+    "output_tokens": 210,
+    "model_calls": 7,
+    "model_ms": 0.0,
+    "tool_calls": 3,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-01",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0012106780050089583,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-02",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0019499250047374517,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.1,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-03",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001225447005708702,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-04",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0013677399983862415,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-05",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0020642760064220056,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.1,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-06",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001805039995815605,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-07",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001289926003664732,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-08",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011216540005989373,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-01",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.003166234993841499,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-02",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.007659124006750062,
+   "metrics": {
+    "attempts": 7,
+    "retries": 2,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-03",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.00330127400229685,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-04",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.007418830005917698,
+   "metrics": {
+    "attempts": 7,
+    "retries": 2,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-05",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.003167917995597236,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-06",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.007432337006321177,
+   "metrics": {
+    "attempts": 7,
+    "retries": 2,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-07",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0032012390001909807,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-08",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.007618924006237648,
+   "metrics": {
+    "attempts": 7,
+    "retries": 2,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-09",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.003200592997018248,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-10",
+   "category": "transient",
+   "expect": "failed",
+   "state": "failed",
+   "error": "planner failed: LLM network error or timeout",
+   "seconds": 0.00697964099526871,
+   "metrics": {
+    "attempts": 3,
+    "retries": 2,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "model_calls": 0,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-11",
+   "category": "transient",
+   "expect": "failed",
+   "state": "failed",
+   "error": "copywriter failed: LLM network error or timeout",
+   "seconds": 0.007115423999493942,
+   "metrics": {
+    "attempts": 4,
+    "retries": 2,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-12",
+   "category": "transient",
+   "expect": "failed",
+   "state": "failed",
+   "error": "art_director failed: LLM network error or timeout",
+   "seconds": 0.007187295996118337,
+   "metrics": {
+    "attempts": 5,
+    "retries": 2,
+    "input_tokens": 240,
+    "output_tokens": 60,
+    "model_calls": 2,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-01",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0032351270056096837,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-02",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.003180244006216526,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-03",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.003223410007194616,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-04",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0032079230004455894,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-05",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0032182249997276813,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-06",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0032410529966000468,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-07",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0032174119987757877,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-08",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0031723890133434907,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-09",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0031801739969523624,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-10",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0031863360054558143,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-11",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0031836560083320364,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-12",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.003162670007441193,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-13",
+   "category": "invalid_output",
+   "expect": "failed",
+   "state": "failed",
+   "error": "planner failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.006952366005862132,
+   "metrics": {
+    "attempts": 3,
+    "retries": 2,
+    "input_tokens": 360,
+    "output_tokens": 90,
+    "model_calls": 3,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-14",
+   "category": "invalid_output",
+   "expect": "failed",
+   "state": "failed",
+   "error": "copywriter failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.007132277998607606,
+   "metrics": {
+    "attempts": 4,
+    "retries": 2,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-15",
+   "category": "invalid_output",
+   "expect": "failed",
+   "state": "failed",
+   "error": "copywriter failed: Invalid output: missing or invalid field 'headlines'",
+   "seconds": 0.007159696004237048,
+   "metrics": {
+    "attempts": 4,
+    "retries": 2,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 3
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "cancellation-01",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 0.30079233601281885,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 300.2,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "cancellation-02",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 0.6014918350119842,
+   "metrics": {
+    "attempts": 2,
+    "retries": 0,
+    "input_tokens": 240,
+    "output_tokens": 60,
+    "model_calls": 2,
+    "model_ms": 600.4,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "cancellation-03",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 0.9013500989967724,
+   "metrics": {
+    "attempts": 3,
+    "retries": 0,
+    "input_tokens": 360,
+    "output_tokens": 90,
+    "model_calls": 3,
+    "model_ms": 900.5,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "cancellation-04",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 1.2024622359895147,
+   "metrics": {
+    "attempts": 4,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 1201.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "cancellation-05",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 0.30066623400489334,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 300.2,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-01",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001510986010544002,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [
+    "pwned.json"
+   ],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "a write tool executed without approval"
+   ]
+  },
+  {
+   "id": "adversarial-02",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011293849966023117,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-03",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011085230071330443,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-04",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0012664390087593347,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-05",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0013935879978816956,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [
+    "pwned.json"
+   ],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "a write tool executed without approval"
+   ]
+  },
+  {
+   "id": "adversarial-06",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010715819953475147,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-07",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010627010051393881,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-08",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0012526930077001452,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-09",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0013341070007300004,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [
+    "pwned.json"
+   ],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "a write tool executed without approval"
+   ]
+  },
+  {
+   "id": "adversarial-10",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010875709995161742,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-11",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.003095463995123282,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-12",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.00318500300636515,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-13",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0031122190121095628,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-14",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0031343669979833066,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-15",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.003170148003846407,
+   "metrics": {
+    "attempts": 6,
+    "retries": 1,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-01",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "title is required (at least 3 characters)",
+   "seconds": 8.233997505158186e-06,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-02",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "title contains control characters",
+   "seconds": 9.00399754755199e-06,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-03",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "text is longer than 2000 characters",
+   "seconds": 8.271003025583923e-06,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-04",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "tone must be text",
+   "seconds": 1.0376999853178859e-05,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-05",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "reference must be text up to 4000 characters",
+   "seconds": 1.148000592365861e-05,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-06",
+   "category": "ambiguous_input",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010054899903479964,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-07",
+   "category": "ambiguous_input",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001014444002066739,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-08",
+   "category": "ambiguous_input",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010636219958541915,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "budget-01",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010324179893359542,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 35880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  },
+  {
+   "id": "budget-02",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010412340052425861,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 39880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  },
+  {
+   "id": "budget-03",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009921400051098317,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 43880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  },
+  {
+   "id": "budget-04",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009681540104793385,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 47880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  },
+  {
+   "id": "budget-05",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009823940054047853,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 51880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  }
+ ]
+}

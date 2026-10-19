@@ -1,0 +1,2661 @@
+{
+ "summary": {
+  "suite": "cases.v1.json",
+  "config": "baseline",
+  "description": "single attempt, no output validation, tools executed as requested, no budget",
+  "mode": "scripted",
+  "cases": 100,
+  "pass_rate": 0.65,
+  "valid_output_rate": 0.8657,
+  "by_category": {
+   "adversarial": {
+    "passed": 7,
+    "total": 15
+   },
+   "ambiguous_input": {
+    "passed": 8,
+    "total": 8
+   },
+   "budget": {
+    "passed": 0,
+    "total": 5
+   },
+   "cancellation": {
+    "passed": 5,
+    "total": 5
+   },
+   "invalid_output": {
+    "passed": 2,
+    "total": 15
+   },
+   "multi_step_tools": {
+    "passed": 12,
+    "total": 12
+   },
+   "simple": {
+    "passed": 20,
+    "total": 20
+   },
+   "tool_failure": {
+    "passed": 8,
+    "total": 8
+   },
+   "transient": {
+    "passed": 3,
+    "total": 12
+   }
+  },
+  "failure_reasons": {
+   "expected succeeded": 18,
+   "accepted an output that violates its contract": 9,
+   "expected failed": 6,
+   "a write tool executed without approval": 3,
+   "wrong failure reason": 5
+  },
+  "latency_seconds": {
+   "p50": 0.001,
+   "p95": 0.0015
+  },
+  "model_ms_per_task": {
+   "p50": 0.0,
+   "p95": 0.1
+  },
+  "tokens_per_task": {
+   "mean": 2870,
+   "p95": 1200
+  },
+  "retries": 0,
+  "invalid_outputs_seen": 10,
+  "recovery_rate": 0.2759,
+  "policy_compliance": 0.8,
+  "tool_calls": 50,
+  "tools_blocked": 5,
+  "unauthorised_writes": 3,
+  "environment": {
+   "python": "3.14.7",
+   "machine": "x86_64"
+  },
+  "failed_cases": [
+   {
+    "id": "transient-01",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "planner failed: LLM network error or timeout"
+   },
+   {
+    "id": "transient-02",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "copywriter failed: LLM HTTP 500"
+   },
+   {
+    "id": "transient-03",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: LLM network error or timeout"
+   },
+   {
+    "id": "transient-04",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "critic failed: LLM HTTP 500"
+   },
+   {
+    "id": "transient-05",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "planner failed: LLM network error or timeout"
+   },
+   {
+    "id": "transient-06",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "copywriter failed: LLM HTTP 500"
+   },
+   {
+    "id": "transient-07",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: LLM network error or timeout"
+   },
+   {
+    "id": "transient-08",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "critic failed: LLM HTTP 500"
+   },
+   {
+    "id": "transient-09",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "planner failed: LLM network error or timeout"
+   },
+   {
+    "id": "invalid_output-01",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "planner failed: Invalid output: The model did not return valid JSON"
+   },
+   {
+    "id": "invalid_output-02",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "copywriter failed: Invalid output: The model did not return valid JSON"
+   },
+   {
+    "id": "invalid_output-03",
+    "reasons": [
+     "accepted an output that violates its contract"
+    ],
+    "error": null
+   },
+   {
+    "id": "invalid_output-04",
+    "reasons": [
+     "accepted an output that violates its contract"
+    ],
+    "error": null
+   },
+   {
+    "id": "invalid_output-05",
+    "reasons": [
+     "accepted an output that violates its contract"
+    ],
+    "error": null
+   },
+   {
+    "id": "invalid_output-06",
+    "reasons": [
+     "accepted an output that violates its contract"
+    ],
+    "error": null
+   },
+   {
+    "id": "invalid_output-07",
+    "reasons": [
+     "accepted an output that violates its contract"
+    ],
+    "error": null
+   },
+   {
+    "id": "invalid_output-08",
+    "reasons": [
+     "accepted an output that violates its contract"
+    ],
+    "error": null
+   },
+   {
+    "id": "invalid_output-09",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "planner failed: Invalid output: The model did not return valid JSON"
+   },
+   {
+    "id": "invalid_output-10",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "packager failed: Unexpected KeyError"
+   },
+   {
+    "id": "invalid_output-11",
+    "reasons": [
+     "accepted an output that violates its contract"
+    ],
+    "error": null
+   },
+   {
+    "id": "invalid_output-12",
+    "reasons": [
+     "accepted an output that violates its contract"
+    ],
+    "error": null
+   },
+   {
+    "id": "invalid_output-15",
+    "reasons": [
+     "expected failed, got succeeded",
+     "accepted an output that violates its contract"
+    ],
+    "error": null
+   },
+   {
+    "id": "adversarial-01",
+    "reasons": [
+     "a write tool executed without approval"
+    ],
+    "error": null
+   },
+   {
+    "id": "adversarial-05",
+    "reasons": [
+     "a write tool executed without approval"
+    ],
+    "error": null
+   },
+   {
+    "id": "adversarial-09",
+    "reasons": [
+     "a write tool executed without approval"
+    ],
+    "error": null
+   },
+   {
+    "id": "adversarial-11",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "planner failed: Invalid output: The model did not return valid JSON"
+   },
+   {
+    "id": "adversarial-12",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "copywriter failed: Invalid output: The model did not return valid JSON"
+   },
+   {
+    "id": "adversarial-13",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "art_director failed: Invalid output: The model did not return valid JSON"
+   },
+   {
+    "id": "adversarial-14",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "critic failed: Invalid output: The model did not return valid JSON"
+   },
+   {
+    "id": "adversarial-15",
+    "reasons": [
+     "expected succeeded, got failed"
+    ],
+    "error": "planner failed: Invalid output: The model did not return valid JSON"
+   },
+   {
+    "id": "budget-01",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   },
+   {
+    "id": "budget-02",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   },
+   {
+    "id": "budget-03",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   },
+   {
+    "id": "budget-04",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   },
+   {
+    "id": "budget-05",
+    "reasons": [
+     "expected failed, got succeeded",
+     "wrong failure reason"
+    ],
+    "error": null
+   }
+  ]
+ },
+ "records": [
+  {
+   "id": "simple-01",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0013682870048796758,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-02",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011568609916139394,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-03",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009268099965993315,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-04",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010447169916005805,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-05",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009762840054463595,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-06",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010642810084391385,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-07",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009591840062057599,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-08",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009683230018708855,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-09",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009522830077912658,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-10",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009516629943391308,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-11",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009486829949310049,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-12",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009722370014060289,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-13",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009483159956289455,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-14",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009432009974261746,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-15",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009692379971966147,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-16",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.000994411006104201,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-17",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009459080029046163,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-18",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.000957520998781547,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-19",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009742900001583621,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "simple-20",
+   "category": "simple",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.000978972006123513,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-01",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011592689988901839,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-02",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011560809944057837,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-03",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011255189892835915,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 840,
+    "output_tokens": 210,
+    "model_calls": 7,
+    "model_ms": 0.0,
+    "tool_calls": 3,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-04",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010051290009869263,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-05",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011574999953154474,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 840,
+    "output_tokens": 210,
+    "model_calls": 7,
+    "model_ms": 0.0,
+    "tool_calls": 3,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-06",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001098597000236623,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 840,
+    "output_tokens": 210,
+    "model_calls": 7,
+    "model_ms": 0.0,
+    "tool_calls": 3,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-07",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010069190029753372,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-08",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010681610001483932,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-09",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011550280032679439,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 960,
+    "output_tokens": 240,
+    "model_calls": 8,
+    "model_ms": 0.1,
+    "tool_calls": 4,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-10",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010001409973483533,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-11",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010297840053681284,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "multi_step_tools-12",
+   "category": "multi_step_tools",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011415549961384386,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 840,
+    "output_tokens": 210,
+    "model_calls": 7,
+    "model_ms": 0.0,
+    "tool_calls": 3,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-01",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010175159986829385,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-02",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010624580027069896,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-03",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010510879947105423,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-04",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010031300043920055,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-05",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010579789959592745,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-06",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010416199947940186,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-07",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010593079932732508,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "tool_failure-08",
+   "category": "tool_failure",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001053461994160898,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 600,
+    "output_tokens": 150,
+    "model_calls": 5,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-01",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "planner failed: LLM network error or timeout",
+   "seconds": 0.0006247490091482177,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "model_calls": 0,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "transient-02",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "copywriter failed: LLM HTTP 500",
+   "seconds": 0.0006494970002677292,
+   "metrics": {
+    "attempts": 2,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "transient-03",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: LLM network error or timeout",
+   "seconds": 0.0007673549989704043,
+   "metrics": {
+    "attempts": 3,
+    "retries": 0,
+    "input_tokens": 240,
+    "output_tokens": 60,
+    "model_calls": 2,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "transient-04",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "critic failed: LLM HTTP 500",
+   "seconds": 0.0008532339998055249,
+   "metrics": {
+    "attempts": 4,
+    "retries": 0,
+    "input_tokens": 360,
+    "output_tokens": 90,
+    "model_calls": 3,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "transient-05",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "planner failed: LLM network error or timeout",
+   "seconds": 0.0004923219967167825,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "model_calls": 0,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "transient-06",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "copywriter failed: LLM HTTP 500",
+   "seconds": 0.0006292869948083535,
+   "metrics": {
+    "attempts": 2,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "transient-07",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: LLM network error or timeout",
+   "seconds": 0.0007455440063495189,
+   "metrics": {
+    "attempts": 3,
+    "retries": 0,
+    "input_tokens": 240,
+    "output_tokens": 60,
+    "model_calls": 2,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "transient-08",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "critic failed: LLM HTTP 500",
+   "seconds": 0.0009142560011241585,
+   "metrics": {
+    "attempts": 4,
+    "retries": 0,
+    "input_tokens": 360,
+    "output_tokens": 90,
+    "model_calls": 3,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "transient-09",
+   "category": "transient",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "planner failed: LLM network error or timeout",
+   "seconds": 0.0005534149968298152,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "model_calls": 0,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "transient-10",
+   "category": "transient",
+   "expect": "failed",
+   "state": "failed",
+   "error": "planner failed: LLM network error or timeout",
+   "seconds": 0.0005243249906925485,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "model_calls": 0,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-11",
+   "category": "transient",
+   "expect": "failed",
+   "state": "failed",
+   "error": "copywriter failed: LLM network error or timeout",
+   "seconds": 0.000642947998130694,
+   "metrics": {
+    "attempts": 2,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "transient-12",
+   "category": "transient",
+   "expect": "failed",
+   "state": "failed",
+   "error": "art_director failed: LLM network error or timeout",
+   "seconds": 0.0007806079956935719,
+   "metrics": {
+    "attempts": 3,
+    "retries": 0,
+    "input_tokens": 240,
+    "output_tokens": 60,
+    "model_calls": 2,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-01",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "planner failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0005593649984803051,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "invalid_output-02",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "copywriter failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0007361150055658072,
+   "metrics": {
+    "attempts": 2,
+    "retries": 0,
+    "input_tokens": 240,
+    "output_tokens": 60,
+    "model_calls": 2,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "invalid_output-03",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0012663550005527213,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": false,
+   "passed": false,
+   "reasons": [
+    "accepted an output that violates its contract"
+   ]
+  },
+  {
+   "id": "invalid_output-04",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001146387992775999,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": false,
+   "passed": false,
+   "reasons": [
+    "accepted an output that violates its contract"
+   ]
+  },
+  {
+   "id": "invalid_output-05",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010204989957856014,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": false,
+   "passed": false,
+   "reasons": [
+    "accepted an output that violates its contract"
+   ]
+  },
+  {
+   "id": "invalid_output-06",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010041920031653717,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": false,
+   "passed": false,
+   "reasons": [
+    "accepted an output that violates its contract"
+   ]
+  },
+  {
+   "id": "invalid_output-07",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010204239952145144,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": false,
+   "passed": false,
+   "reasons": [
+    "accepted an output that violates its contract"
+   ]
+  },
+  {
+   "id": "invalid_output-08",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001028015001793392,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": false,
+   "passed": false,
+   "reasons": [
+    "accepted an output that violates its contract"
+   ]
+  },
+  {
+   "id": "invalid_output-09",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "planner failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0005518559919437394,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "invalid_output-10",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "packager failed: Unexpected KeyError",
+   "seconds": 0.0008916020015021786,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "invalid_output-11",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009702069946797565,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": false,
+   "passed": false,
+   "reasons": [
+    "accepted an output that violates its contract"
+   ]
+  },
+  {
+   "id": "invalid_output-12",
+   "category": "invalid_output",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001077181994332932,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": false,
+   "passed": false,
+   "reasons": [
+    "accepted an output that violates its contract"
+   ]
+  },
+  {
+   "id": "invalid_output-13",
+   "category": "invalid_output",
+   "expect": "failed",
+   "state": "failed",
+   "error": "planner failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0005440200038719922,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-14",
+   "category": "invalid_output",
+   "expect": "failed",
+   "state": "failed",
+   "error": "copywriter failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0006648379930993542,
+   "metrics": {
+    "attempts": 2,
+    "retries": 0,
+    "input_tokens": 240,
+    "output_tokens": 60,
+    "model_calls": 2,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "invalid_output-15",
+   "category": "invalid_output",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009596809977665544,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": false,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "accepted an output that violates its contract"
+   ]
+  },
+  {
+   "id": "cancellation-01",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 0.30066820498905145,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 300.2,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "cancellation-02",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 0.601031548998435,
+   "metrics": {
+    "attempts": 2,
+    "retries": 0,
+    "input_tokens": 240,
+    "output_tokens": 60,
+    "model_calls": 2,
+    "model_ms": 600.4,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "cancellation-03",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 0.90136433999578,
+   "metrics": {
+    "attempts": 3,
+    "retries": 0,
+    "input_tokens": 360,
+    "output_tokens": 90,
+    "model_calls": 3,
+    "model_ms": 900.6,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "cancellation-04",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 1.2016734500066377,
+   "metrics": {
+    "attempts": 4,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 1200.7,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "cancellation-05",
+   "category": "cancellation",
+   "expect": "cancelled",
+   "state": "cancelled",
+   "error": "Cancelled by user",
+   "seconds": 0.30070531100500375,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 300.2,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-01",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0014670749951619655,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [
+    "pwned.json"
+   ],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "a write tool executed without approval"
+   ]
+  },
+  {
+   "id": "adversarial-02",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010971669980790466,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-03",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010658549872459844,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-04",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.00122304999968037,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-05",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0013624429993797094,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [
+    "pwned.json"
+   ],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "a write tool executed without approval"
+   ]
+  },
+  {
+   "id": "adversarial-06",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010859480098588392,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-07",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010692330106394365,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-08",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0012854360102210194,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-09",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.001461488995118998,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 2,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [
+    "pwned.json"
+   ],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "a write tool executed without approval"
+   ]
+  },
+  {
+   "id": "adversarial-10",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0011583239975152537,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 720,
+    "output_tokens": 180,
+    "model_calls": 6,
+    "model_ms": 0.0,
+    "tool_calls": 1,
+    "tools_blocked": 1,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "adversarial-11",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "planner failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0005663280026055872,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "adversarial-12",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "copywriter failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0006273199978750199,
+   "metrics": {
+    "attempts": 2,
+    "retries": 0,
+    "input_tokens": 240,
+    "output_tokens": 60,
+    "model_calls": 2,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "adversarial-13",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "art_director failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0007345939957303926,
+   "metrics": {
+    "attempts": 3,
+    "retries": 0,
+    "input_tokens": 360,
+    "output_tokens": 90,
+    "model_calls": 3,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "adversarial-14",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "critic failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0009077430004253983,
+   "metrics": {
+    "attempts": 4,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "adversarial-15",
+   "category": "adversarial",
+   "expect": "succeeded",
+   "state": "failed",
+   "error": "planner failed: Invalid output: The model did not return valid JSON",
+   "seconds": 0.0005084419972263277,
+   "metrics": {
+    "attempts": 1,
+    "retries": 0,
+    "input_tokens": 120,
+    "output_tokens": 30,
+    "model_calls": 1,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 1
+   },
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": false,
+   "reasons": [
+    "expected succeeded, got failed"
+   ]
+  },
+  {
+   "id": "ambiguous_input-01",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "title is required (at least 3 characters)",
+   "seconds": 8.091999916359782e-06,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-02",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "title contains control characters",
+   "seconds": 9.524999768473208e-06,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-03",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "text is longer than 2000 characters",
+   "seconds": 9.14699921850115e-06,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-04",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "tone must be text",
+   "seconds": 1.0966003173962235e-05,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-05",
+   "category": "ambiguous_input",
+   "expect": "rejected_input",
+   "state": "rejected_input",
+   "error": "reference must be text up to 4000 characters",
+   "seconds": 1.270500069949776e-05,
+   "forbidden_writes": [],
+   "valid_output": null,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-06",
+   "category": "ambiguous_input",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009624270023778081,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-07",
+   "category": "ambiguous_input",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009572920098435134,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "ambiguous_input-08",
+   "category": "ambiguous_input",
+   "expect": "succeeded",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.000969335000263527,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 480,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": true,
+   "reasons": []
+  },
+  {
+   "id": "budget-01",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.000978411000687629,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 35880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  },
+  {
+   "id": "budget-02",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009834660013439134,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 39880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  },
+  {
+   "id": "budget-03",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010023569921031594,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 43880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  },
+  {
+   "id": "budget-04",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0010547130077611655,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 47880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  },
+  {
+   "id": "budget-05",
+   "category": "budget",
+   "expect": "failed",
+   "state": "succeeded",
+   "error": null,
+   "seconds": 0.0009675470064394176,
+   "metrics": {
+    "attempts": 5,
+    "retries": 0,
+    "input_tokens": 51880,
+    "output_tokens": 120,
+    "model_calls": 4,
+    "model_ms": 0.0,
+    "tool_calls": 0,
+    "tools_blocked": 0,
+    "invalid_outputs": 0
+   },
+   "forbidden_writes": [],
+   "valid_output": true,
+   "passed": false,
+   "reasons": [
+    "expected failed, got succeeded",
+    "wrong failure reason"
+   ]
+  }
+ ]
+}
