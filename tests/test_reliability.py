@@ -66,6 +66,19 @@ class Validation(unittest.TestCase):
         self.assertEqual(task["steps"][1]["attempts"], 2)
         self.assertEqual(task["metrics"]["invalid_outputs"], 1)
 
+    def test_retry_prompt_carries_the_validator_feedback(self):
+        replies = happy_replies()
+        replies.insert(0, json.dumps({"objective": "o"}))
+        provider, calls = model(replies)
+        orch = make(provider)
+        self.assertEqual(orch.wait(orch.submit(BRIEF)["id"])["state"], "succeeded")
+        self.assertNotIn("rejected by the validator", calls[0]["messages"][1]["content"])
+        self.assertIn("missing or invalid field 'angle'", calls[1]["messages"][1]["content"])
+        provider, calls = model([json.dumps({"objective": "o"})] + happy_replies())
+        orch = make(provider, policy=Policy(repair_feedback=False))
+        orch.wait(orch.submit(BRIEF)["id"])
+        self.assertNotIn("rejected by the validator", calls[1]["messages"][1]["content"])
+
     def test_without_retry_policy_an_invalid_answer_fails_fast(self):
         replies = happy_replies()
         replies.insert(0, "Sure! Here is the plan in prose.")

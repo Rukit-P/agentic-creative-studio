@@ -178,6 +178,7 @@ class ModelProvider:
     """Shared prompt building, tool loop and JSON parsing. Subclasses implement `complete`."""
     name = "model"
     uses_tools = True
+    accepts_feedback = True
     max_tokens = 700
 
     def __init__(self):
@@ -195,7 +196,7 @@ class ModelProvider:
         self._meta.add(usage.get("input_tokens"), usage.get("output_tokens"), (time.perf_counter() - started) * 1000)
         return text
 
-    def run(self, agent: str, brief: dict, context: dict, tools=None) -> dict:
+    def run(self, agent: str, brief: dict, context: dict, tools=None, feedback: str | None = None) -> dict:
         self._meta.reset()
         if agent == "packager":                      # pure assembly, no model call needed
             return DemoProvider()._packager(brief, context, 0)
@@ -205,6 +206,9 @@ class ModelProvider:
         if tools is not None and specs:
             system += " " + TOOL_PROTOCOL + json.dumps(specs, ensure_ascii=False)
         messages = [{"role": "user", "content": json.dumps({"brief": public_brief, "previous_steps": context}, ensure_ascii=False)}]
+        if feedback:                                 # repair prompt: say exactly what was wrong with the last answer
+            messages[0]["content"] += ("\n\nYour previous answer was rejected by the validator: " + feedback
+                                       + ". Reply with one JSON object that has every required field.")
         for _ in range(MAX_TOOL_TURNS + 1):
             text = self._timed(system, messages)
             value = extract_json(text)

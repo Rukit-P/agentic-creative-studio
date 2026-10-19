@@ -44,6 +44,7 @@ class Policy:
     enforce_tools: bool = True          # allow-lists, argument validation and approval for write tools
     budget_tokens: int | None = 20000   # per task, across runs; None disables
     jitter: bool = True                 # randomise back-off (0.5x-1.5x) so retries do not synchronise
+    repair_feedback: bool = True        # on retry after an invalid answer, tell the model what the validator rejected
 
 
 class AgentTools:
@@ -344,10 +345,13 @@ class Orchestrator:
         base = self.backoff * 2 ** (attempt - 1)
         return base * (0.5 + self.rng.random()) if self.policy.jitter else base
 
-    def _call_provider(self, task, agent, context, runner):
+    def _call_provider(self, task, agent, context, runner, feedback=None):
+        kwargs = {}
         if getattr(self.provider, "uses_tools", False):
-            return self.provider.run(agent, task["brief"], context, tools=AgentTools(runner, agent))
-        return self.provider.run(agent, task["brief"], context)
+            kwargs["tools"] = AgentTools(runner, agent)
+        if feedback and self.policy.repair_feedback and getattr(self.provider, "accepts_feedback", False):
+            kwargs["feedback"] = feedback
+        return self.provider.run(agent, task["brief"], context, **kwargs)
 
     def _account(self, task, attempt):
         meta = self.provider.last_meta() if hasattr(self.provider, "last_meta") else {}
@@ -362,7 +366,7 @@ class Orchestrator:
         return meta, used
 
     def _run_step(self, task, step, context, flag, runner):
-        agent = step["agent"]
+        agent, feedback = step["agent"], None
         for attempt in range(1, self.max_attempts + 1):
             with self.cond:
                 step.update(state="running", attempts=attempt, error=None)
@@ -371,7 +375,7 @@ class Orchestrator:
             try:
                 self._fault(task, agent, attempt)
                 try:
-                    output = self._call_provider(task, agent, context, runner)
+                    output = self._call_provider(task, agent, context, runner, feedback)
                 finally:
                     meta, used = self._account(task, attempt)
                 problems = validate_output(agent, output) if self.policy.validate_outputs else []
@@ -388,6 +392,7 @@ class Orchestrator:
             except TransientError as error:
                 message, retry = str(error), attempt < self.max_attempts
             except InvalidOutputError as error:
+                feedback = str(error)[:300]
                 with self.cond:
                     task["metrics"]["invalid_outputs"] += 1
                 message, retry = f"Invalid output: {error}", self.policy.retry_invalid and attempt < self.max_attempts
